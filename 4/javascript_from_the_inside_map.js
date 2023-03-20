@@ -1,9 +1,9 @@
 Array.prototype.mapArr = function (cb, thisArg) {
-  const arr = [...Object(this)]
+  const arr = new Array(this.length)
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i]) {
-      arr[i] = cb.call(thisArg || this, arr[i], i, arr)
+  for (let i = 0; i < this.length; i++) {
+    if (i in this) {
+      arr[i] = cb.call(thisArg, this[i], i, this)
     }
   }
 
